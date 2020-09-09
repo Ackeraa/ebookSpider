@@ -25,48 +25,20 @@
 
 		<hr class="mb-5">
 
-		<div class="row wow fadeIn">
-			<div class="col-lg-7 col-xl-2 ml-xl-4 mb-4">
-				<h4 class="mb-2 dark-grey-text">
-					计算机网络
-				</h4>
-				<p class="grey-text">文件大小:2.85M</p>
-				<a href="#" target="_blank" class="btn btn-primary btn-sm">Download</a>
-			</div>
+		{% for book in books %}
+			<div class="row wow fadeIn">
+				<div class="col-lg-7 col-xl-5 ml-xl-4 mb-4">
+					<h6 class="mb-3 dark-grey-text">
+						{{book['name']}}
+					</h6>
+					<p class="grey-text">作者:{{book['author']}}</p>
+					<p class="grey-text">文件大小:{{book['size']}}</p>
+					<p class="grey-text">文件类型:{{book['type']}}</p>
+					<a href="/download?link={{book['link']}}" class="btn btn-primary btn-sm">Download</a>
+				</div>
 
-			<div class="col-lg-7 col-xl-2 ml-xl-4 mb-4">
-				<h4 class="mb-2 dark-grey-text">
-					计算机网络
-				</h4>
-				<p class="grey-text">文件大小:2.85M</p>
-				<a href="#" target="_blank" class="btn btn-primary btn-sm">Download</a>
 			</div>
-
-			<div class="col-lg-7 col-xl-2 ml-xl-4 mb-4">
-				<h4 class="mb-2 dark-grey-text">
-					计算机网络
-				</h4>
-				<p class="grey-text">文件大小:2.85M</p>
-				<a href="#" target="_blank" class="btn btn-primary btn-sm">Download</a>
-			</div>
-
-			<div class="col-lg-7 col-xl-2 ml-xl-4 mb-4">
-				<h4 class="mb-2 dark-grey-text">
-					计算机网络
-				</h4>
-				<p class="grey-text">文件大小:2.85M</p>
-				<a href="#" target="_blank" class="btn btn-primary btn-sm">Download</a>
-			</div>
-
-			<div class="col-lg-7 col-xl-2 ml-xl-4 mb-4">
-				<h4 class="mb-2 dark-grey-text">
-					计算机网络
-				</h4>
-				<p class="grey-text">文件大小:2.85M</p>
-				<a href="#" target="_blank" class="btn btn-primary btn-sm">Download</a>
-			</div>
-		</div>
-		<!--Grid row-->
+			{% endfor %}
 
 	</div>
 
