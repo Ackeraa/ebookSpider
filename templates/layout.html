@@ -5,7 +5,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="author" content="colorlib.com">
-		<link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
 		<link href="/static/css/main.css" rel="stylesheet" />
 		<link rel="stylesheet" href="/static/css/all.css">
 		<!-- Bootstrap core CSS -->
@@ -14,6 +13,11 @@
 		<link href="/static/css/mdb.min.css" rel="stylesheet">
 		<!-- Your custom styles (optional) -->
 		<link href="/static/css/style.min.css" rel="stylesheet">
+		<!-- MDBootstrap Datatables  -->
+		<link href="/static/css/addons/datatables.min.css" rel="stylesheet">
+		<!-- MDBootstrap Datatables  -->
+		<link rel="stylesheet" href="/static/css/mdb.min.css">
+
 	</head>
 		<title>eBooks</title>
 		{% block style %}
@@ -24,7 +28,11 @@
 		{% endblock %}
 	</body>
 
-	<script src="/static/js/extention/choices.js></script>
+	<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/addons/datatables.min.js"></script>
+	<script type="text/javascript" src="/static/js/mdb.min.js"></script>
+	<script type="text/javascript" src="/static/js/extention/choices.js"></script>
+	
 	<script>
 		const customSelects = document.querySelectorAll("select");
 		const deleteBtn = document.getElementById('delete')

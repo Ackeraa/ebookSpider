@@ -15,8 +15,8 @@ def search():
         books = crawler.craw(keywords)
         return render_template("result.html", books = books)
 
-@app.route("/download", methods = ["GET", "POST"])
-def download():
+@app.route("/preview", methods = ["GET", "POST"])
+def preview():
     global crawler
     link = crawler.download(request.args.get("link"))
     return render_template("preview.html", link = link)
