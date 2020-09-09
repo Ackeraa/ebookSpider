@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="author" content="colorlib.com">
+		<link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
+		<link href="/static/css/main.css" rel="stylesheet" />
+		<link rel="stylesheet" href="/static/css/all.css">
+		<!-- Bootstrap core CSS -->
+		<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Material Design Bootstrap -->
+		<link href="/static/css/mdb.min.css" rel="stylesheet">
+		<!-- Your custom styles (optional) -->
+		<link href="/static/css/style.min.css" rel="stylesheet">
+	</head>
+		<title>eBooks</title>
+		{% block style %}
+		{% endblock %}
+	</head>
+	<body>
+		{% block body %}
+		{% endblock %}
+	</body>
+
+	<script src="/static/js/extention/choices.js></script>
+	<script>
+		const customSelects = document.querySelectorAll("select");
+		const deleteBtn = document.getElementById('delete')
+		const choices = new Choices('select',{
+			searchEnabled: false,
+			itemSelectText: '',
+			removeItemButton: true,
+		});
+		for (let i = 0; i < customSelects.length; i++)
+		{
+			customSelects[i].addEventListener('addItem', function(event)
+			{
+				if (event.detail.value)
+				{
+					let parent = this.parentNode.parentNode
+					parent.classList.add('valid')
+					parent.classList.remove('invalid')
+				}
+				else
+				{
+					let parent = this.parentNode.parentNode
+					parent.classList.add('invalid')
+					parent.classList.remove('valid')
+				}
+			}, false);
+		}
+		deleteBtn.addEventListener("click", function(e)
+		{
+			e.preventDefault()
+			const deleteAll = document.querySelectorAll('.choices__button')
+			for (let i = 0; i < deleteAll.length; i++)
+			{
+				deleteAll[i].click();
+			}
+		});
+
+		</script>
+</html>
