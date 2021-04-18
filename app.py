@@ -1,30 +1,30 @@
 from flask import Flask, redirect, render_template, request
-from Crawler import Crawler
+from Spider import Spider
 
 app = Flask(__name__)
 
-crawler = Crawler()
+spider = Spider()
 
 @app.route("/", methods = ["GET", "POST"])
 def search():
-    global crawler
+    global spider
     if request.method == "GET":
         return render_template("index.html") 
     else:
         keywords = request.form.get("keywords")
-        books = crawler.craw(keywords)
+        books = spider.craw(keywords)
         return render_template("result.html", books = books)
 
 @app.route("/preview", methods = ["GET", "POST"])
 def preview():
-    global crawler
-    link = crawler.download(request.args.get("link"))
+    global spider
+    link = spider.download(request.args.get("link"))
     return render_template("preview.html", link = link)
 
 @app.route("/download", methods = ["GET", "POST"])
 def download():
-    global crawler
-    link = crawler.download(request.args.get("link"))
+    global spider
+    link = spider.download(request.args.get("link"))
     print("*******************", link, "*******************")
     return render_template("preview.html", link = link)
 

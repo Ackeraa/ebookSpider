@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import requests
 import re
 
-class pdfDriveCrawler:
+class pdfDriveSpider:
 
     def __init__(self):
         self.books = []
@@ -73,7 +73,7 @@ class pdfDriveCrawler:
 
 if __name__ == '__main__':
 
-    crawler = pdfDriveCrawler()
-    crawler.craw("Network")
-    urlretrieve(crawler.download(crawler.books[0]["link"]), "a.pdf")
+    spider = pdfDriveSpider()
+    spider.craw("Network")
+    urlretrieve(Spider.download(Spider.books[0]["link"]), "a.pdf")
 

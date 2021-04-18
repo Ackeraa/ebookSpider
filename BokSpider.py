@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import requests
 import re
 
-class BokCrawler:
+class BokSpider:
     
     def __init__(self):
         self.books = []
@@ -57,6 +57,6 @@ class BokCrawler:
         #urlretrieve(downloadLink, "a.pdf")
 
 if __name__ == '__main__':
-    bokCrawler = BokCrawler()
-    bokCrawler.craw('Network')
-    bokCrawler.download(bokCrawler.books[0]['link'])
+    bokSpider = BokSpider()
+    bokSpider.craw('Network')
+    bokSpider.download(bokSpider.books[0]['link'])
