@@ -21,6 +21,13 @@ def preview():
     link = crawler.download(request.args.get("link"))
     return render_template("preview.html", link = link)
 
+@app.route("/download", methods = ["GET", "POST"])
+def download():
+    global crawler
+    link = crawler.download(request.args.get("link"))
+    print("*******************", link, "*******************")
+    return render_template("preview.html", link = link)
+
 if __name__ == '__main__':
     app.run(debug=True)
 

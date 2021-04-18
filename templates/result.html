@@ -1,6 +1,11 @@
 {% extends "layout.html" %}
 {% block style %}
-
+<style>
+	.frame_style{
+		width: 100%;
+		height: 100%;
+	}
+</style>
 {% endblock %}
 {% block body %}
 
@@ -23,49 +28,60 @@
 		</form>
 
 		<hr class="mb-5">
-		<table id="dtBasicExample" class="table table-striped table-bordered table-sm">
-			<thead>
-				<tr>
-					<th>序号</th>
-					<th>书名</th>
-					<th>作者</th>
-					<th>大小</th>
-					<th>类型</th>
-					<th>下载</th>
-				</tr>
-				</thead>
-				<tbody>
-					{% for book in books %}
-					<tr>
-						<td>
-							{{book['order']}}
-						</td>
-						<td>
-							{{book['name']}}
-						</td>
-						<td>
-							{{book['author']}}
-						</td>
-						<td>
-							{{book['size']}}
-						</td>
-						<td>
-							{{book['type']}}
-						</td>
-						<td>
-							<a href="/preview?link={{book['link']}}" class="btn btn-primary btn-sm">Preview</a>
-						</td>
-					</tr>
+		<div class = "container-fluid">
+			<div class = "row">
+				<div class = "col-sm-6">
+					<table id="dtBasicExample" class="table table-striped table-bordered table-sm">
+						<thead>
+							<tr style="text-align: center;">
+								<th class="col-sm-auto" style="vertical-align: middle">序号</th>
+								<th class="col-sm-auto" style="vertical-align: middle">书名</th>
+								<th class="col-sm-auto" style="vertical-align: middle">作者</th>
+								<th class="col-sm-auto" style="vertical-align: middle">大小</th>
+								<th class="col-sm-auto" style="vertical-align: middle">类型</th>
+								<th class="col-sm-auto" style="vertical-align: middle">下载</th>
+							</tr>
+							</thead>
+							<tbody>
+								{% for book in books %}
+								<tr style="text-align: center;">
+									<td  style="vertical-align: middle">
+										{{book['order']}}
+									</td>
+									<td style="vertical-align: middle">
+										{{book['name']}}
+									</td>
+									<td style="vertical-align: middle">
+										{{book['author']}}
+									</td>
+									<td style="vertical-align: middle">
+										{{book['size']}}
+									</td>
+									<td style="vertical-align: middle">
+										{{book['type']}}
+									</td>
+									<td style="vertical-align: middle">
+										<a href="/preview?link={{book['link']}}" class="btn btn-primary btn-sm">预览</a>
+										<h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h6>
+										<a href="/download?link={{book['link']}}" class="btn btn-primary btn-sm">下载</a>
+									</td>
+								</tr>
 
-					{% endfor %}
-				</tbody>
-		</table>
-				
+								{% endfor %}
+							</tbody>
+					</table>
+				</div>
+				<div id = "s" class = "col-sm-6" >
+					<div class="row">
+						<div id = "preview" class="col-lg-12 col-lg-offset-2" style="height: 650px; margin-top:0px; position: absolute;">
+							<iframe class="frame_style" src="http://127.0.0.1:5000/static/pdfjs/web/viewer.html?file=\static\doc\a.pdf">
+							</iframe>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<ul>
-
 	</div>
-
 
 	<script>
 		document.querySelector("#task").onkeyup = function(){
@@ -82,6 +98,35 @@
 			$('#dtBasicExample').DataTable();
 			$('.dataTables_length').addClass('bs-select');
 		});
+	</script>
+
+	<script>
+		var h_div1 = document.getElementById('preview');
+		var h_hvttop = 0;
+		window.onscroll = function () {
+			HoverTreeMove(h_div1, h_hvttop)
+			//显示信息
+			var h_scrollTop = document.documentElement.scrollTop || document.body.scrollTop;//滚动的距离	
+		};
+		function HoverTreeMove(obj,top)
+		{
+			var h_scrollTop = document.documentElement.scrollTop || document.body.scrollTop;//滚动的距离
+			var h_buchang = 20;
+			if (obj.offsetTop < h_scrollTop + top - h_buchang)
+			{
+				obj.style.top = obj.offsetTop + h_buchang + "px";
+				setTimeout(function () { HoverTreeMove(obj, top); }, 80);
+			}
+			else if (obj.offsetTop > h_scrollTop + top + h_buchang)
+			{
+				obj.style.top = (obj.offsetTop - h_buchang) + "px";
+				setTimeout(function () { HoverTreeMove(obj, top); }, 80);
+			}
+			else {
+				obj.style.top = h_scrollTop + top + "px";
+			}
+		}
+		HoverTreeMove(h_div1, 0)
 	</script>
 
 {% endblock %}

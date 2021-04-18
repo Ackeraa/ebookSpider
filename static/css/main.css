@@ -1177,19 +1177,19 @@ legend {
   display: -ms-flexbox;
   -ms-flex-pack: center;
       justify-content: center;
-  background: #d9eff5;
+  background:	#7A8B8B;
   padding: 15px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Times New Roman";
 }
 
 .s011 form {
-  width: 40%;
+  width: 100%;
   max-width: 790px;
   margin: 0;
 }
 
 .s011 form .inner-form {
-  width: 100%;
+  width: 90%;
 }
 
 .s011 form .inner-form .input-field {
